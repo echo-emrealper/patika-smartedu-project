@@ -1,6 +1,7 @@
 //MODULES
 const express = require('express');
 const ejs = require('ejs');
+const pageRoute = require('./routes/pageRoute');
 
 //VARIABLES
 const app = express();
@@ -13,17 +14,7 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 //ROUTES
-app.get('/', (req, res) => {
-  res.status(200).render('index', {
-    page_name: 'index',
-  });
-});
-
-app.get('/about', (req, res) => {
-  res.status(200).render('about', {
-    page_name: 'about',
-  });
-});
+app.use('/', pageRoute);
 
 // LISTENER
 app.listen(port, () => {
