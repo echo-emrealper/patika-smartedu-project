@@ -20,6 +20,12 @@ const UserSchema = new Schema({
     required: true,
   },
 
+  role: {
+    type: String,
+    enum: ['Student', 'Teacher', 'Admin'],
+    default: 'Student',
+  },
+
   createdAt: {
     type: Date,
     default: Date.now,
