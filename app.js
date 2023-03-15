@@ -1,6 +1,7 @@
 //MODULES
 const express = require('express');
 const ejs = require('ejs');
+const flash = require('connect-flash');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
@@ -34,6 +35,11 @@ app.use(
     }),
   })
 );
+app.use(flash());
+app.use((req, res, next) => {
+  res.locals.flashMessages = req.flash();
+  next();
+});
 
 // TEMPLATE ENGINE
 app.set('view engine', 'ejs');
@@ -52,3 +58,4 @@ app.use('/users', userRoute);
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);
 });
+
