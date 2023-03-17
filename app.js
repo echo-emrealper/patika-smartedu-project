@@ -5,6 +5,7 @@ const flash = require('connect-flash');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const methodOverride = require('method-override');
 const pageRoute = require('./routes/pageRoute');
 const courseRoute = require('./routes/courseRoute');
 const categoryRoute = require('./routes/categoryRoute');
@@ -40,6 +41,11 @@ app.use((req, res, next) => {
   res.locals.flashMessages = req.flash();
   next();
 });
+app.use(
+  methodOverride('_method', {
+    methods: ['POST', 'GET'],
+  })
+);
 
 // TEMPLATE ENGINE
 app.set('view engine', 'ejs');
@@ -58,4 +64,3 @@ app.use('/users', userRoute);
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);
 });
-

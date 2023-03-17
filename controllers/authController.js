@@ -59,7 +59,7 @@ exports.getDashboardPage = async (req, res) => {
     'courses'
   );
   const categories = await Category.find({}).sort('name');
-  const courses = await Course.find({ user: req.session.userID });
+  const courses = await Course.find({ user: req.session.userID }).sort({ createdAt: -1 });
   res.status(200).render('dashboard', {
     page_name: 'dashboard',
     user,
