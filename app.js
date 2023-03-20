@@ -13,12 +13,12 @@ const userRoute = require('./routes/userRoute');
 
 //VARIABLES
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 5000;
 global.userIN = null;
 
 // CONNECT
 mongoose.set('strictQuery', false);
-mongoose.connect('mongodb://127.0.0.1:27017/smartedu-db').then(() => {
+mongoose.connect('mongodb+srv://hipotetik:tMeQBbpKYN8yzOMR@education.gmmznig.mongodb.net/smartedu-db?retryWrites=true&w=majority').then(() => {
   console.log('DB connected successfully');
 });
 
