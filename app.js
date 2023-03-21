@@ -32,7 +32,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({
-      mongoUrl: 'mongodb://127.0.0.1:27017/smartedu-db',
+      mongoUrl: 'mongodb+srv://hipotetik:tMeQBbpKYN8yzOMR@education.gmmznig.mongodb.net/smartedu-db?retryWrites=true&w=majority',
     }),
   })
 );
